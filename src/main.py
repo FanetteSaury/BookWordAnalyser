@@ -1,4 +1,4 @@
-from scraper import * # import the scraper function from the scraper file
+from scraper import *
 import re
 
 if __name__ == "__main__":

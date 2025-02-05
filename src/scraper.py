@@ -4,9 +4,20 @@ import re # regex module
 
 def scraper(url):
     http_response = requests.get(url)
-    soup = BeautifulSoup(http_response.text, 'html')
-    txt = soup.get_text()
-    return txt
+    soup = BeautifulSoup(http_response.text, 'html.parser')
+    
+    # Project Gutenberg books have the main content within <body> tags and delimited by the texts below !
+    start_text = "*** START OF THIS PROJECT GUTENBERG EBOOK"
+    end_text = "*** END OF THIS PROJECT GUTENBERG EBOOK"
+    
+    text = soup.get_text()
+    start_idx = text.find(start_text)
+    end_idx = text.find(end_text)
+    
+    if start_idx != -1 and end_idx != -1:
+        text = text[start_idx:end_idx]
+    
+    return text
 
 def clean_text(text):
     """
