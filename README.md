@@ -1,4 +1,4 @@
-# Word Frequency Distribution Tool for Novels
+# Word Frequency Distribution Tool for Project Gutemberg
 
 ## Project Overview
 The Word Frequency Distribution Tool is a Python application designed to scrape full-text novels from public domain sources like Project Gutenberg. It processes the text and generates a word frequency distribution, allowing users to study writing styles, vocabulary richness, and linguistic patterns. This tool is especially useful for literary analysis, data science projects, and natural language processing (NLP) enthusiasts.
