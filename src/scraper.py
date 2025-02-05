@@ -1,12 +1,12 @@
-import requests # http requests module
-from bs4 import BeautifulSoup # webscraping module
-import re # regex module
+import requests
+from bs4 import BeautifulSoup
+import re
 
 def scraper(url):
     http_response = requests.get(url)
     soup = BeautifulSoup(http_response.text, 'html.parser')
     
-    # Project Gutenberg books have the main content within <body> tags and delimited by the texts below !
+    # Project Gutenberg books have the main content within <body> tags and delimited by the texts below! 5/02/25: "a blessing"
     start_text = "*** START OF THIS PROJECT GUTENBERG EBOOK"
     end_text = "*** END OF THIS PROJECT GUTENBERG EBOOK"
     
@@ -32,15 +32,7 @@ def clean_text(text):
     Returns:
         list: A list of words obtained from the cleaned text.
     """
-    text = re.sub(r'\n+', '\n', text) # replace multiple newlines with a single newline (amazing omg)
+    text = re.sub(r'\n+', '\n', text) # replace multiple newlines with a single newline. incredible
     text = text.lower()
     words = text.split() # words is a list
     return words
-
-def counter(text, expression):
-    words = clean_text(text)
-    histogram = {}
-
-    for w in words:
-        histogram[w] = histogram[w] + 1 if w in histogram else 1
-    return histogram.get(expression.lower(), 0) # retrieves occurence, 0 otherwise
